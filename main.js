@@ -103,13 +103,16 @@ function stream(time) {
     }
     var timeBtwn = 60000/bpm;
     var curClickTime = timeBtwn*clicks*division+firstTime;
-    while (calcScore(time, curClickTime, false) == 4) {
+    var calcVal = calcScore(time, curClickTime, false);
+    while (calcVal == 4) {
         clicks++;
         curClickTime = timeBtwn*clicks*division+firstTime;
+        calcVal = calcScore(time, curClickTime, false);
     }
+    if (calcVal == 3) clicks--;
     if (time < curClickTime-curLeeway[0]) return "Overstreaming! "+Math.round((curClickTime-curLeeway[0]-time)*100)/100+" ms";
     else if (time > curClickTime+curLeeway[0]) return "Understreaming! "+Math.abs(Math.round((curClickTime+curLeeway[0]-time)*100)/100)+" ms";
-    else return "Ok!";
+    else return "Ok! ("+(curClickTime>time?"+":"")+Math.round((curClickTime-time)*100)/100+" ms)";
 }
 
 function calcScore(time1, time2) {
