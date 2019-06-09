@@ -1,0 +1,8 @@
+table {
+    border: 1px solid black;
+    empty-cells: hide;
+}
+
+td {
+    border: 1px solid black
+}

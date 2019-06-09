@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>osu! Stream Practice</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <form id="options" autocomplete="off" onchange="changeOptions()">
+        <p>Target BPM: <input type="number" name="bpm" value=180></p>
+        <p>Key 1: <input type="text" name="key0" value="z"></p>
+        <p>Key 2: <input type="text" name="key1" value="x"></p>
+        <p>Beat Division: 
+            <input type="radio" name="division" value="1" id="division1"><label for="division1">1/1</label>
+            <input type="radio" name="division" value="0.5" id="division2"><label for="division2">1/2</label>
+            <input type="radio" name="division" value="0.3333333333333" id="division3"><label for="division3">1/3</label>
+            <input type="radio" name="division" value="0.25" id="division4" checked="true"><label for="division4">1/4</label>
+            <input type="radio" name="division" value="0.1666666666666" id="division6"><label for="division6">1/6</label>
+        </p>
+        <p>Speed Mod: 
+            <input type="radio" name="speed" value="0" id="speedht"><label for="speedht">HT</label>
+            <input type="radio" name="speed" value="1" id="speednm" checked="true"><label for="speednm">None</label>
+            <input type="radio" name="speed" value="2" id="speeddt"><label for="speeddt">DT</label>
+        </p>
+        <p>Difficulty Mod:
+            <input type="radio" name="diff" value="0" id="diffez"><label for="diffez">EZ</label>
+            <input type="radio" name="diff" value="1" id="diffnm" checked="true"><label for="diffnm">None</label>
+            <input type="radio" name="diff" value="2" id="diffhr"><label for="diffhr">HR</label>
+        </p>
+        <p>OD: <input type="range" name="od" value=6 id="odinput" min=0 max=10 step=0.1 style="width: 25%" oninput="odSlide()"><output id="odoutput">6</output></p>
+    </form>
+    <p>Values: 300: ±<span id="v300">43.5</span> ms, 100: ±<span id="v100">91.5</span> ms, 50: ±<span id="v50">139.5</span> ms</p>
+    <button onclick="toggleListen()">Start/Stop</button>
+    <p id="temp"></p>
+    <table>
+        <tr>
+            <td></td>
+            <td>300</td>
+            <td>100</td>
+            <td>50</td>
+            <td>Miss</td>
+        </tr>
+        <tr>
+            <td>Total Number</td>
+            <td id="total300">0</td>
+            <td id="total100">0</td>
+            <td id="total50">0</td>
+            <td id="totalmiss">0</td>
+        </tr>
+        <tr>
+            <td>Longest Streak</td>
+            <td id="lstreak300">0</td>
+            <td id="lstreak100">0</td>
+            <td id="lstreak50">0</td>
+        </tr>
+        <tr>
+            <td>Current Streak</td>
+            <td id="cstreak300">0</td>
+            <td id="cstreak100">0</td>
+            <td id="cstreak50">0</td>
+        </tr>
+    </table>
+    <script src="main.js"></script>
+</body>
+
+</html>
