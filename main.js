@@ -2,6 +2,7 @@
 function j(x){return document.getElementById(x);}
 
 var listening = false;
+var hoveringOver = false;
 var keys = ['z','x'];
 var division = 0.25;
 var od = 6;
@@ -21,6 +22,26 @@ document.onkeydown = function(e) {
     }
 };
 
+document.ontouchstart = function(e) {
+    if (listening) {
+        e.preventDefault();
+        for (var i = 0; i < e.changedTouches.length; i++) j("temp").innerHTML = stream(Date.now());
+    }
+};
+
+document.onmousedown = function(e) {
+    if (listening) {
+        if (!hoveringOver) {
+            e.preventDefault();
+            j("temp").innerHTML = stream(Date.now());
+        }
+    }
+};
+
+document.oncontextmenu = function(e) {
+    if (listening) e.preventDefault();
+};
+
 function toggleListen() {
     listening = !listening;
     firstTime = -1;
@@ -28,6 +49,11 @@ function toggleListen() {
     scores = [0,0,0,0];
     longStreak = [0,0,0];
     curStreak = [0,0,0];
+    j("offon").innerHTML = listening?"On":"Off";
+}
+
+function buttonover(a) {
+    hoveringOver = a;
 }
 
 function changeOptions() {
@@ -144,3 +170,5 @@ function updateStreak(type) {
     }
     displayStreaks();
 }
+
+

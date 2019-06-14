@@ -32,7 +32,7 @@
         <p>OD: <input type="range" name="od" value=6 id="odinput" min=0 max=10 step=0.1 style="width: 25%" oninput="odSlide()"><output id="odoutput">6</output></p>
     </form>
     <p>Values: 300: ±<span id="v300">43.5</span> ms, 100: ±<span id="v100">91.5</span> ms, 50: ±<span id="v50">139.5</span> ms</p>
-    <button onclick="toggleListen()">Start/Stop</button>
+    <p><button onclick="toggleListen()" onmouseover="buttonover(true)" onmouseout="buttonover(false)">Start/Stop</button> <span id="offon">Off</span></p>
     <p><kbd id="temp"></kbd></p>
     <table>
         <tr>
