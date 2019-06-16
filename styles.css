@@ -1,8 +1,20 @@
-table {
-    border: 1px solid black;
-    empty-cells: hide;
+body {
+    padding: 20px;
 }
 
-td {
-    border: 1px solid black
+input.short {
+    max-width: 100px;
+}
+
+.label-disabled {
+    pointer-events: none;
+}
+
+.limited-width {
+    width: 50%;
+    max-width: 500px;
+}
+
+.table-nonfluid {
+    width: auto !important;
 }

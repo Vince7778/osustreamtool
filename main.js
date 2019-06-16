@@ -18,14 +18,14 @@ var curStreak = [0,0,0];
 
 document.onkeydown = function(e) {
     if (listening && keys.includes(e.key)) {
-        j("temp").innerHTML = stream(Date.now());
+        j("indicator").innerHTML = stream(Date.now());
     }
 };
 
 document.ontouchstart = function(e) {
     if (listening) {
         e.preventDefault();
-        for (var i = 0; i < e.changedTouches.length; i++) j("temp").innerHTML = stream(Date.now());
+        for (var i = 0; i < e.changedTouches.length; i++) j("indicator").innerHTML = stream(Date.now());
     }
 };
 
@@ -33,7 +33,7 @@ document.onmousedown = function(e) {
     if (listening) {
         if (!hoveringOver) {
             e.preventDefault();
-            j("temp").innerHTML = stream(Date.now());
+            j("indicator").innerHTML = stream(Date.now());
         }
     }
 };
@@ -49,7 +49,7 @@ function toggleListen() {
     scores = [0,0,0,0];
     longStreak = [0,0,0];
     curStreak = [0,0,0];
-    j("offon").innerHTML = listening?"On":"Off";
+    j("startstop").innerText = listening?"Stop":"Start";
 }
 
 function buttonover(a) {
